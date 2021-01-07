@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>RPS</title>
+    </head>
+    <body>
+        <script>
+            const computerPlay = () => {
+                let dice = Math.floor(Math.random() * 3) + 1;
+                switch(dice) {
+                    case 1:
+                        return "rock";
+                        break;
+                    case 2: 
+                        return "scissors";
+                        break;
+                    case 3: 
+                        return "paper";
+                        break;
+                    default:
+                        console.log("dice broken.");
+                        return;
+                }
+            };
+
+            const playOneRound = (playerChoice, computerChoice) => {
+                switch(playerChoice) {
+                    case "rock": 
+                        if(computerChoice === "scissors") return "You win! Rock beats scissors.";
+                        else if(computerChoice === "paper") return "You lose. Paper beats rock.";
+                        else return "Tie! Both chose rock.";
+                        break;
+                    case "paper": 
+                        if(computerChoice === "rock") return "You win! Paper beats rock.";
+                        else if (computerChoice === "scissors") return "You lose. Scissors beat paper";
+                        else return "Tie! Both chose paper.";
+                        break;
+                    case "scissors": 
+                        if(computerChoice === "paper") return "You win! Scissors beat paper.";
+                        else if(computerChoice === "rock") return "You lose. Rock beats scissors.";
+                        else return "Tie! Both chose scissors."
+                        break;
+                    default: return "Sorry, invalid choice...";
+                };
+            };
+
+            while (true) {
+                input = prompt("Rock, paper, scissors, shoot! (Type 'end' to quit)").toLowerCase();
+                if (input === "end") break;
+                else console.log(playOneRound(input, computerPlay()));
+            };
+        </script>
+    </body>
+</html>
